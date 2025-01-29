@@ -79,21 +79,21 @@ $(".note").on("click", "#save-btn",function () {
 
     console.log(noteArray[noteIndex].noteText);
 
-    sessionStorage.setItem("NoteStorage", JSON.stringify(noteArray));
+    localStorage.setItem("NoteStorage", JSON.stringify(noteArray));
 
-    console.log(sessionStorage.getItem("NoteStorage"));
+    console.log(localStorage.getItem("NoteStorage"));
 
-    storageLocal = JSON.parse(sessionStorage.getItem("NoteStorage"));
+    storageLocal = JSON.parse(localStorage.getItem("NoteStorage"));
 
     
 });
 
 // Retrive note data from Local Storage 
 $(document).ready(function () {
-    storageLocal = JSON.parse(sessionStorage.getItem("NoteStorage"));
+    storageLocal = JSON.parse(localStorage.getItem("NoteStorage"));
     console.log(storageLocal)
     if(storageLocal.length != 0) {
-        console.log(sessionStorage.getItem("NoteStorage"))
+        console.log(localStorage.getItem("NoteStorage"))
         
         storageLocal.forEach((element, index) => {
             console.log(element);
@@ -111,13 +111,13 @@ $(document).ready(function () {
 
 //Delete Storage
 $(".note").on("click","#delete-btn", function () {
-    storageLocal = JSON.parse(sessionStorage.getItem("NoteStorage"));
+    storageLocal = JSON.parse(localStorage.getItem("NoteStorage"));
 
     storageLocal.splice(noteIndex, 1);
     // Refreshing the page to see the changes on the DOM
     location.replace(location.href);
 
-    sessionStorage.setItem("NoteStorage", JSON.stringify(storageLocal));
+    localStorage.setItem("NoteStorage", JSON.stringify(storageLocal));
 });
 
 //Clears the text from the text area
